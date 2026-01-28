@@ -1,0 +1,730 @@
+/* #region FONT */
+
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* #endregion FONT */
+
+
+/* RESET I BAZA */
+* {
+    box-sizing: border-box; /* Kluczowe: padding nie powiększa elementów */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+
+html {
+    height: 100%;
+    /* PRZENOSIMY TŁO TUTAJ - to gwarantuje, że jest pod wszystkim, nawet pod paskiem */
+    background-color: #000000; 
+    background-image: url('IMAGES/bg.png'); /* <--- Sprawdź czy tu ma być 'bg.png' czy 'IMAGES/bg.png' */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+body {
+    min-height: 100%;
+    /* Body musi być przezroczyste, żeby widzieć tło z html */
+    background: transparent;
+    
+    /* KLUCZ DO SUKCESU: */
+    /* Scrollbar nie zabiera miejsca, tylko leży na wierzchu */
+    overflow-y: overlay; 
+    
+    font-family: "Sekuya", system-ui;
+    color: white;
+}
+
+
+/* #region SCROLLBAR */
+
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background-color: hsl(0, 0%, 33%, 0.6); 
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+/* #endregion */
+
+/* #region h1 h2 h3 */
+    h1 {
+        font-family: "Sekuya", system-ui;
+        color: white;
+        font-weight: 400;
+        /* Skalowalna czcionka: min 60px, max 150px */
+        font-size: clamp(60px, 10vw, 150px); 
+        text-align: center;
+        margin-top: 35vh; /* Odstęp od góry zależny od ekranu */
+        margin-bottom: 50px;
+        line-height: 1.1;
+        text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    h2 {
+        font-family: "Montserrat", system-ui;
+        font-weight: 300;
+        color: white;
+        text-align: center;
+        font-size: clamp(16px, 1.5vw, 22px); /* Czytelny tekst na każdym ekranie */
+        line-height: 1.6;
+    }
+    h3 {
+        font-family: "Sekuya", system-ui;
+        font-weight: 400;
+        font-size: clamp(30px, 5vw, 50px);
+        text-align: center;
+        margin-bottom: 30px;
+        color: white;
+    }
+/* #endregion SCROLLBAR */
+
+/* #region UKLAD STRONY (LAYOUT) */
+    .header-logo-container {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 20px;
+        /* Poniższe zachowuje "lepką" pozycję z oryginału, ale bezpieczniej */
+        /* position: sticky; top: 0; z-index: 10; */ 
+    }
+    .main-content {
+        width: 100%;
+        max-width: 1400px; /* Maksymalna szerokość treści */
+        margin: 0 auto;    /* Wyśrodkowanie */
+        padding: 0 20px;   /* Marginesy boczne na telefonach */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    /* Odstepy miedzy sekcjami - zamiast 1000px margin */
+    .section-spacer {
+        margin-bottom: 150px;
+        width: 100%;
+        scroll-margin-top: 100px; /* Żeby menu nie zasłaniało nagłówka po kliknięciu */
+    }
+/* #endregion UKLAD STRONY (LAYOUT) */
+
+/* #region SESJA */
+    #SESJA {
+        margin-top: 60vh; 
+    }
+    /* Teksty */
+    .text-block {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 30px;
+        backdrop-filter: blur(2px);
+
+        background: transparent; /* Lekkie tło dla czytelności */
+        border-radius: 5px;
+    }
+    .text-block-sesja {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: transparent; /* Lekkie tło dla czytelności */
+        border-radius: 5px;
+        padding: 30px;
+        backdrop-filter: blur(2px);
+    }
+    /* Kontener na zdjęcie - niech będzie elastyczny */
+    #image-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* Usuwamy scale i sztywne wymiary diva */
+    }
+    /* Stylujemy bezpośrednio obrazek wewnątrz diva */
+    #image-block img {
+        width: 100%;        /* Skaluj się do kontenera... */
+        max-width: 400px;   /* ...ale nie bądź szerszy niż 400px (możesz zmienić tę wartość) */
+        height: auto;       /* Zachowaj proporcje */
+        
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        object-fit: cover;
+        opacity: 0.9;
+    }
+    .content-row {
+        display: flex;              /* Układamy elementy obok siebie */
+        align-items: center;        /* ŚRODEK PIONOWO: To sprawia, że tekst i zdjęcie są w jednej osi */
+        justify-content: center;    /* ŚRODEK POZIOMO: Całość jest na środku strony */
+        gap: 60px;                  /* Odstęp między tekstem a zdjęciem */
+        width: 100%;
+        margin: 0 auto;             /* Dla pewności */
+        margin-top: 85px;
+    }
+    /* Poprawka dla text-block, żeby nie był za szeroki i zrobił miejsce na zdjęcie */
+    .text-block-sesja {
+        /* Zmieniamy max-width, żeby tekst nie spychał zdjęcia */
+        max-width: 600px; 
+        margin: 0; /* Usuwamy margin: 0 auto, bo Flexbox już centruje */
+    }
+    .text-block-sesja {
+        /* Zmieniamy max-width, żeby tekst nie spychał zdjęcia */
+        max-width: 600px; 
+        margin: 0; /* Usuwamy margin: 0 auto, bo Flexbox już centruje */
+    }
+    /* --- WAŻNE: RTV / MOBILE --- */
+    /* Na telefonie chcemy, żeby zdjęcie spadło POD tekst */
+    @media (max-width: 900px) {
+        .content-row {
+            flex-direction: column; /* Zmiana układu na pionowy */
+            gap: 30px;
+        }
+        
+        .text-block-sesja {
+            max-width: 100%; /* Na telefonie tekst znowu na całą szerokość */
+        }
+    }
+/* #endregion SESJA */
+
+/* #region VIDEO */
+    #VIDEO{
+
+        margin-top: 60vh;
+
+    }
+    /* VIDEO SECTION */
+    .video-header {
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    .video-container {
+        margin-top: 10vh;
+        display: flex;
+        flex-wrap: wrap; /* Filmy spadną pod siebie na małym ekranie */
+        justify-content: center;
+        gap: 120px;
+        width: 100%;
+        
+    }
+    video {
+        max-width: 100%; /* Skalowanie do ekranu */
+        width: 500px;    /* Bazowa szerokość */
+        
+        opacity: 0.9;
+        transition: opacity 0.3s;
+        box-shadow: 0 20px 25px rgba(0,0,0,1);
+        
+        
+    }
+    video:hover {
+        opacity: 1;
+    }
+    .video-link {
+        display: block; /* Sprawia, że link zachowuje się jak pudełko */
+        cursor: pointer; /* Zmienia kursor na łapkę po najechaniu */
+        transition: transform 0.3s ease; /* Płynne powiększanie */
+    }
+    /* Opcjonalnie: efekt powiększenia po najechaniu na cały link */
+    .video-link:hover {
+        transform: scale(1.1);
+    }
+    /* Upewniamy się, że wideo wewnątrz linku nadal wygląda dobrze */
+    .video-link video {
+        display: block; /* Usuwa dziwne odstępy pod wideo */
+        width: 500px;   /* Twoja bazowa szerokość */
+        max-width: 100%;
+    }
+/* #endregion VIDEO */
+
+/* #region MIX MASTER */
+    #MIXMASTER {
+        margin-top: 60vh;
+    }
+
+    /* Kontener na listę piosenek */
+    .mix-container {
+        display: flex;
+        flex-direction: column; /* Układaj piosenki jedna pod drugą */
+        gap: 20px;              /* Odstęp między piosenkami */
+        width: 100%;
+        max-width: 900px;       /* Maksymalna szerokość listy */
+        margin: 30px auto 0;    /* Odstęp od tekstu powyżej */
+    }
+
+    /* Pojedynczy pasek z piosenką */
+    .track-item {
+        display: flex;          /* Układ poziomy (okładka obok tekstu) */
+        align-items: center;
+        background-color: hsl(0, 0%, 0%, 0.2); /* Czarne tło jak na screenie */
+        padding: 10px;
+        border-radius: 5px;     /* Lekkie zaokrąglenie rogów */
+        border: 1px solid rgba(255, 255, 255, 0.1); /* Delikatna ramka */
+        transition: transform 0.3s ease, border-color 0.3s ease;
+        
+    }
+
+    .track-item:hover {
+        transform: translateX(10px); /* Lekki ruch w prawo po najechaniu */
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* OKŁADKA (Kwadrat po lewej) */
+    .track-cover {
+        position: relative;
+        display: block;
+        width: 120px;  /* Szerokość okładki */
+        height: 80px;  /* Wysokość okładki (prostokątna jak na screenie YT) */
+        flex-shrink: 0; /* Nie zgniataj okładki */
+        overflow: hidden;
+        margin-right: 20px;
+    }
+
+    .track-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Ikona PLAY po najechaniu */
+    .play-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0; /* Ukryte domyślnie */
+        transition: opacity 0.3s ease;
+    }
+
+    .play-overlay i {
+        color: white;
+        font-size: 24px;
+    }
+
+    .track-cover:hover .play-overlay {
+        opacity: 0.5; /* Pokaż po najechaniu */
+    }
+
+    /* TEKST PO PRAWEJ */
+    .track-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+         /* Ten fioletowy pasek z Twojego screena */
+        padding-left: 15px; /* Odstęp tekstu od fioletowego paska */
+        height: 100%;
+    }
+
+    .track-info h4 {
+        font-family: "Bebas Neue", system-ui; /* Twoja czcionka */
+        font-size: 26px;
+        color: white;
+        margin: 0 0 5px 0;
+        text-align: left; /* Wyrównaj do lewej */
+        letter-spacing: 1px;
+    }
+
+    .track-info p {
+        font-family: "Montserrat", sans-serif; /* Prosta czcionka dla opisu */
+        font-size: 14px;
+        color: #ccc;
+        margin: 0;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    /* MOBILE - Dostosowanie */
+    @media (max-width: 600px) {
+        .track-item {
+            flex-direction: column; /* Na telefonie okładka nad tekstem */
+            align-items: flex-start;
+            padding: 20px;
+        }
+        
+        .track-cover {
+            width: 100%; /* Okładka na całą szerokość */
+            height: 150px;
+            margin-bottom: 15px;
+            margin-right: 0;
+        }
+
+        .track-info h4 {
+            font-size: 20px;
+        }
+    }
+/* #endregion MIX MASTER */
+
+/* #region PORTFOLIO */
+    #PORTFOLIO {
+        margin-top: 40vh; /* Trochę mniejszy odstęp od góry */
+    }
+    .portfolio-container {
+        
+        display: flex;              /* Włączamy Flexbox */
+        flex-wrap: wrap;            /* Pozwól elementom spadać do nowej linii */
+        justify-content: center;    /* KLUCZOWE: Wyśrodkuj wszystko idealnie */
+        gap: 100px;                  /* Odstępy między kaflami */
+        width: 100%;
+        max-width: 1400px;          /* Ograniczamy szerokość siatki */
+        margin: 50px auto 0;        /* Marginesy: 50px góra, AUTO boki (centrowanie kontenera) */
+        padding: 0 20px;
+        margin-top: 15vh;
+    }
+    .portfolio-box {
+
+        /* Ustawienia kafelka */
+        flex: 0 1 350px;            /* 0=nie rośnij, 1=kurcz się, 350px=szerokość bazowa */
+        /* Dzięki temu kafelki są równe i nie rozciągają się dziwnie */
+        
+        position: relative;
+        overflow: hidden;
+        border-radius: 0px;        /* Zaokrąglenie rogów */
+        aspect-ratio: 1 / 1;        /* Wymuś kwadrat */
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        border: 1px solid rgba(255,255,255,0.05); /* Delikatna ramka */
+        margin-top: 0;
+    }
+    /* Stylizacja zdjęcia */
+    .portfolio-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+    }
+    /* Warstwa z tekstem */
+    .portfolio-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        backdrop-filter: blur(5px);
+    }
+    /* Teksty w środku */
+    .portfolio-overlay h4 {
+        font-family: "Sekuya", system-ui;
+        font-size: 30px;
+        color: white;
+        margin-bottom: 5px;
+        transform: translateY(20px);
+        transition: transform 0.3s ease;
+    }
+    .portfolio-overlay p {
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        color: #bbb;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transform: translateY(20px);
+        transition: transform 0.3s ease 0.1s;
+    }
+    /* --- EFEKTY HOVER --- */
+    .portfolio-box:hover img {
+        transform: scale(1.1);
+    }
+    .portfolio-box:hover .portfolio-overlay {
+        opacity: 1;
+    }
+    .portfolio-box:hover .portfolio-overlay h4,
+    .portfolio-box:hover .portfolio-overlay p {
+        transform: translateY(0);
+    }
+    /* --- MOBILE --- */
+    @media (max-width: 768px) {
+        .portfolio-box {
+            flex: 0 1 100%; /* Na telefonie zajmij całą szerokość */
+            max-width: 350px; /* Ale nie więcej niż 350px */
+        }
+    }
+/* #endregion PORTFOLIO */
+
+/* #region KONTAKT */
+    #KONTAKT{
+
+        margin-top: 50vh;
+
+    }
+    #image-block-ig{
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* Usuwamy scale i sztywne wymiary diva */
+
+    }
+    #image-block-ig img{
+
+        width: 100%;        /* Skaluj się do kontenera... */
+        max-width: 400px;   /* ...ale nie bądź szerszy niż 400px (możesz zmienić tę wartość) */
+        height: auto;       /* Zachowaj proporcje */
+        
+        object-fit: cover;
+        opacity: 0.85;
+        scale: 0.5;
+    }
+    .content-row-ig {
+
+        display: flex;              /* Układamy elementy obok siebie */
+        align-items: center;        /* ŚRODEK PIONOWO: To sprawia, że tekst i zdjęcie są w jednej osi */
+        justify-content: center;    /* ŚRODEK POZIOMO: Całość jest na środku strony */
+        gap: 30px;                  /* Odstęp między tekstem a zdjęciem */
+        width: 100%;
+        padding-right: 13vw;
+        
+        margin-top: 14vh;
+    }
+    #ig_links{
+
+        margin-top: 2.4vh;   
+
+    }
+/* #endregion KONTAKT */
+
+/* #region footer*/
+    .footer{
+
+        background-color: transparent;
+        width: 100%;
+        height: 60px;
+        margin-top: 20vh;
+
+    }
+    #footer_text{
+
+        margin-top: 200px;
+        opacity: 0.5;
+        font-size: 20px;
+
+    }
+/* #endregion footer*/
+
+/* #region SIDEBAR */
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 60px; /* Wąski pasek na start */
+        height: 100%;
+        background: transparent;
+        transition: all .5s ease;
+        z-index: 1000;
+        font-family: "Bebas Neue", system-ui;
+        opacity: 0.85;
+        
+    }
+    .sidebar header {
+        margin-top: 15vh;
+        font-size: 22px;
+        color: white;
+        text-align: center;
+        line-height: 70px;
+        opacity: 0; 
+        
+    }
+    .sidebar ul {
+        margin-top: 50px;
+    }
+    .sidebar ul a {
+        display: block;
+        height: 100%;
+        width: 100%;
+        line-height: 60px;
+        font-size: 50px;
+        color: white;
+        padding-left: 20px;
+        white-space: nowrap; /* Tekst nie zawija się */
+        transition: 0.4s;
+        
+    }
+    .sidebar ul li:hover a {
+        padding-left: 30px;
+        color: #ccc;
+    }
+    @media (max-width: 1700px) {
+
+        h1{
+
+            margin-top: 15vh;
+
+        }
+        
+        .sidebar {
+            /* ZMIANA POZYCJI NA GÓRĘ */
+            display: flex;          /* Umożliwia układanie elementów obok siebie */
+            flex-direction: row;    /* Układ poziomy (wiersz) */
+            justify-content: space-between; /* Logo po lewej, menu po prawej */
+            align-items: center;    /* Wyśrodkowanie w pionie */
+            
+            width: 100%;            /* Pełna szerokość ekranu */
+            height: 70px;           /* Stała wysokość paska */
+            
+            background: transparent; /* Ciemne tło, żeby napisy były czytelne */
+            backdrop-filter: blur(10px);
+            border-right: none;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            
+            /* Resetujemy style z wersji pionowej */
+            padding: 0 20px;
+        }
+
+        /* Blokujemy rozszerzanie się paska po najechaniu (bo jest na górze) */
+        .sidebar:hover {
+            width: 100%;
+            background: transparent;
+        }
+
+        /* LOGO (7PM) */
+        .sidebar header {
+            opacity: 0;         /* Zawsze widoczne */
+            margin-top: 0;      /* Usuwamy margines z góry */
+            line-height: normal;
+            font-size: 24px;
+            width: auto;        /* Nie zajmuje całej szerokości */
+            pointer-events: none;
+        }
+
+        /* LISTA LINKÓW (ul) */
+        .sidebar ul {
+            display: flex;      /* Linki też w poziomie */
+            flex-direction: row;
+            margin-top: 0;      /* Usuwamy margines */
+            gap: 20px;          /* Odstępy między linkami */
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            width: auto;
+        }
+
+        /* SAME LINKI (a) */
+        .sidebar ul a {
+            padding: 0 10px;    /* Mniejszy padding */
+            line-height: 70px;  /* Wyrównanie do wysokości paska */
+            text-align: center;
+            font-size: 30px;    /* Trochę mniejsza czcionka, żeby się zmieściło */
+            opacity: 0.9;
+        }
+
+        /* Usuwamy efekt przesuwania tekstu w prawo po najechaniu */
+        .sidebar ul li:hover a {
+            padding-left: 10px; 
+            color: #ccc;
+        }
+        
+        /* Dodatkowa poprawka dla treści strony, żeby pasek nie zasłaniał góry */
+        .header-logo-container {
+            margin-top: 25vh; /* Zwiększamy odstęp, bo pasek jest teraz na górze */
+        }
+    }
+    @media (max-width: 850px) {
+        .sidebar {
+            display: none;
+        }
+        .sidebar:hover {
+            
+            display: none;
+        } 
+    }
+/* #endregion SIDEBAR */
+
+
+
+
+
+
+
+/* ANIMACJE */
+.elemencik {
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 30%;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+/* MEDIA QUERIES - DOSTOSOWANIE DO TELEFONÓW */
+@media (max-width: 768px) {
+    /* Na telefonach: */
+    
+    h1 {
+        margin-top: 15vh;
+        font-size: 60px;
+    }
+    
+    #SESJA {
+        margin-top: 30vh; /* Mniejszy odstęp na mobilu */
+    }
+    #VIDEO {
+        margin-top: 5vh; /* Mniejszy odstęp na mobilu */
+    }
+    #MIXMASTER {
+        margin-top: 5vh; /* Mniejszy odstęp na mobilu */
+    }
+    #PORTFOLIO {
+        margin-top: 5vh; /* Mniejszy odstęp na mobilu */
+    }
+    #KONTAKT {
+        margin-top: 5vh; /* Mniejszy odstęp na mobilu */
+    }
+    
+    .portfolio-item {
+        flex-direction: column; /* Zdjęcie pod tekstem */
+        height: auto;
+        padding: 20px;
+    }
+    
+    .portfolio-item img {
+        margin: 0 auto; /* Wyśrodkuj zdjęcie */
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+    }
+
+    /* Ukryj boczny pasek na telefonie i daj go na dół lub zrób hamburgera */
+    /* W tej wersji zostawiamy minimalny pasek po lewej */
+    .sidebar {
+        display: none;
+    }
+    .sidebar:hover {
+        
+        display: none;
+    }
+}
+/* Na dużych ekranach (PC) pokaż Ziutka */
+@media (min-width: 1200px) {
+    #ziutek_1 {
+        display: block;
+    }
+}
+
+
