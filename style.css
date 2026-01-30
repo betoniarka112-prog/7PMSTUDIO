@@ -8,39 +8,41 @@
 
 /* #endregion FONT */
 
+/* #region MAIN */
 
-/* RESET I BAZA */
-* {
-    box-sizing: border-box; /* Kluczowe: padding nie powiększa elementów */
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    text-decoration: none;
-}
+    * {
+        box-sizing: border-box; /* Kluczowe: padding nie powiększa elementów */
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+    }
 
+    html {
+        height: 100%;
+        /* PRZENOSIMY TŁO TUTAJ - to gwarantuje, że jest pod wszystkim, nawet pod paskiem */
+        background-color: #000000; 
+        background-image: url('IMAGES/bg.png'); /* <--- Sprawdź czy tu ma być 'bg.png' czy 'IMAGES/bg.png' */
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
 
-html {
-    height: 100%;
-    /* PRZENOSIMY TŁO TUTAJ - to gwarantuje, że jest pod wszystkim, nawet pod paskiem */
-    background-color: #000000; 
-    background-image: url('IMAGES/bg.png'); /* <--- Sprawdź czy tu ma być 'bg.png' czy 'IMAGES/bg.png' */
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-}
-body {
-    min-height: 100%;
-    /* Body musi być przezroczyste, żeby widzieć tło z html */
-    background: transparent;
-    
-    /* KLUCZ DO SUKCESU: */
-    /* Scrollbar nie zabiera miejsca, tylko leży na wierzchu */
-    overflow-y: overlay; 
-    
-    font-family: "Sekuya", system-ui;
-    color: white;
-}
+    }
 
+    body {
+        min-height: 100%;
+        /* Body musi być przezroczyste, żeby widzieć tło z html */
+        background: transparent;
+        
+        /* KLUCZ DO SUKCESU: */
+        /* Scrollbar nie zabiera miejsca, tylko leży na wierzchu */
+        overflow-y: overlay; 
+        
+        font-family: "Sekuya", system-ui;
+        color: white;
+    }
+
+/* #endregion MAIN */
 
 /* #region SCROLLBAR */
 
@@ -93,6 +95,7 @@ body {
     }
 /* #endregion SCROLLBAR */
 
+
 /* #region UKLAD STRONY (LAYOUT) */
     .header-logo-container {
         position: relative;
@@ -123,45 +126,49 @@ body {
 /* #endregion UKLAD STRONY (LAYOUT) */
 
 /* #region SESJA */
-    #SESJA {
-        margin-top: 60vh; 
-    }
-    /* Teksty */
-    .text-block {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 30px;
-        backdrop-filter: blur(2px);
 
-        background: transparent; /* Lekkie tło dla czytelności */
-        border-radius: 5px;
+    #SESJA{
+
+        margin-top: 60vh; 
+
     }
-    .text-block-sesja {
+    .text-block{
+
         max-width: 1000px;
         margin: 0 auto;
-        background: transparent; /* Lekkie tło dla czytelności */
+        padding: 30px;
+        background: transparent;
+        border-radius: 5px;
+
+    }
+    .text-block-sesja{
+
+        max-width: 1000px;
+        margin: 0 auto;
+        background: transparent;
         border-radius: 5px;
         padding: 30px;
-        backdrop-filter: blur(2px);
+
     }
-    /* Kontener na zdjęcie - niech będzie elastyczny */
-    #image-block {
+    #image-block{
+
         display: flex;
         justify-content: center;
         align-items: center;
-        /* Usuwamy scale i sztywne wymiary diva */
-    }
-    /* Stylujemy bezpośrednio obrazek wewnątrz diva */
-    #image-block img {
-        width: 100%;        /* Skaluj się do kontenera... */
-        max-width: 400px;   /* ...ale nie bądź szerszy niż 400px (możesz zmienić tę wartość) */
-        height: auto;       /* Zachowaj proporcje */
         
+    }
+    #image-block img{
+
+        width: 100%;
+        max-width: 400px;
+        height: auto; 
         box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         object-fit: cover;
         opacity: 0.9;
+
     }
-    .content-row {
+    .content-row{
+    
         display: flex;              /* Układamy elementy obok siebie */
         align-items: center;        /* ŚRODEK PIONOWO: To sprawia, że tekst i zdjęcie są w jednej osi */
         justify-content: center;    /* ŚRODEK POZIOMO: Całość jest na środku strony */
@@ -169,6 +176,7 @@ body {
         width: 100%;
         margin: 0 auto;             /* Dla pewności */
         margin-top: 85px;
+
     }
     /* Poprawka dla text-block, żeby nie był za szeroki i zrobił miejsce na zdjęcie */
     .text-block-sesja {
@@ -235,7 +243,7 @@ body {
     }
     /* Opcjonalnie: efekt powiększenia po najechaniu na cały link */
     .video-link:hover {
-        transform: scale(1.1);
+        transform: scale(1.08);
     }
     /* Upewniamy się, że wideo wewnątrz linku nadal wygląda dobrze */
     .video-link video {
@@ -394,9 +402,11 @@ body {
         border-radius: 0px;        /* Zaokrąglenie rogów */
         aspect-ratio: 1 / 1;        /* Wymuś kwadrat */
         cursor: pointer;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        box-shadow: 0 20px 25px rgba(0,0,0,1);
         border: 1px solid rgba(255,255,255,0.05); /* Delikatna ramka */
         margin-top: 0;
+        transition: transform 0.5s ease;
+        
     }
     /* Stylizacja zdjęcia */
     .portfolio-box img {
@@ -404,7 +414,7 @@ body {
         height: 100%;
         object-fit: cover;
         display: block;
-        transition: transform 0.5s ease;
+        
     }
     /* Warstwa z tekstem */
     .portfolio-overlay {
@@ -430,6 +440,7 @@ body {
         margin-bottom: 5px;
         transform: translateY(20px);
         transition: transform 0.3s ease;
+        
     }
     .portfolio-overlay p {
         font-family: "Montserrat", sans-serif;
@@ -441,8 +452,8 @@ body {
         transition: transform 0.3s ease 0.1s;
     }
     /* --- EFEKTY HOVER --- */
-    .portfolio-box:hover img {
-        transform: scale(1.1);
+    .portfolio-box:hover {
+        transform: scale(1.08);
     }
     .portfolio-box:hover .portfolio-overlay {
         opacity: 1;
@@ -519,6 +530,7 @@ body {
 
     }
 /* #endregion footer*/
+
 
 /* #region SIDEBAR */
     .sidebar {
@@ -652,79 +664,127 @@ body {
 
 
 
+/* #region ANIMACJE */
+    .elemencik {
+        animation: appear linear;
+        animation-timeline: view();
+        animation-range: entry 0 cover 30%;
+    }
+    @keyframes appear {
+        from {
+            opacity: 0;
+            transform: scale(0.9) translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+    }
+/* #endregion ANIMACJE */
 
-
-
-/* ANIMACJE */
-.elemencik {
-    animation: appear linear;
-    animation-timeline: view();
-    animation-range: entry 0 cover 30%;
-}
-
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: scale(0.9) translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-/* MEDIA QUERIES - DOSTOSOWANIE DO TELEFONÓW */
-@media (max-width: 768px) {
-    /* Na telefonach: */
-    
-    h1 {
-        margin-top: 15vh;
-        font-size: 60px;
-    }
-    
-    #SESJA {
-        margin-top: 30vh; /* Mniejszy odstęp na mobilu */
-    }
-    #VIDEO {
-        margin-top: 5vh; /* Mniejszy odstęp na mobilu */
-    }
-    #MIXMASTER {
-        margin-top: 5vh; /* Mniejszy odstęp na mobilu */
-    }
-    #PORTFOLIO {
-        margin-top: 5vh; /* Mniejszy odstęp na mobilu */
-    }
-    #KONTAKT {
-        margin-top: 5vh; /* Mniejszy odstęp na mobilu */
-    }
-    
-    .portfolio-item {
-        flex-direction: column; /* Zdjęcie pod tekstem */
-        height: auto;
-        padding: 20px;
-    }
-    
-    .portfolio-item img {
-        margin: 0 auto; /* Wyśrodkuj zdjęcie */
-        width: 100%;
-        max-width: 300px;
-        height: auto;
-    }
-
-    /* Ukryj boczny pasek na telefonie i daj go na dół lub zrób hamburgera */
-    /* W tej wersji zostawiamy minimalny pasek po lewej */
-    .sidebar {
-        display: none;
-    }
-    .sidebar:hover {
+/* #region MEDIA QUERIES - DOSTOSOWANIE DO TELEFONÓW */
+    @media (max-width: 768px) {
+        /* Na telefonach: */
         
-        display: none;
-    }
-}
-/* Na dużych ekranach (PC) pokaż Ziutka */
-@media (min-width: 1200px) {
-    #ziutek_1 {
-        display: block;
-    }
-}
+        h1 {
+            margin-top: 15vh;
+            font-size: 60px;
+        }
+        
+        #SESJA {
+            margin-top: 30vh; /* Mniejszy odstęp na mobilu */
+        }
+        #VIDEO {
+            margin-top: 5vh; /* Mniejszy odstęp na mobilu */
+        }
+        #MIXMASTER {
+            margin-top: 5vh; /* Mniejszy odstęp na mobilu */
+        }
+        #PORTFOLIO {
+            margin-top: 5vh; /* Mniejszy odstęp na mobilu */
+        }
+        #KONTAKT {
+            margin-top: 5vh; /* Mniejszy odstęp na mobilu */
+        }
+        
+        .portfolio-item {
+            flex-direction: column; /* Zdjęcie pod tekstem */
+            height: auto;
+            padding: 20px;
+        }
+        
+        .portfolio-item img {
+            margin: 0 auto; /* Wyśrodkuj zdjęcie */
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+        }
 
+        /* Ukryj boczny pasek na telefonie i daj go na dół lub zrób hamburgera */
+        /* W tej wersji zostawiamy minimalny pasek po lewej */
+        .sidebar {
+            display: none;
+        }
+        .sidebar:hover {
+            
+            display: none;
+        }
+    }
+    /* Na dużych ekranach (PC) pokaż Ziutka */
+    @media (min-width: 1200px) {
+        #ziutek_1 {
+            display: block;
+        }
+    }
+/* #endregion MEDIA QUERIES - DOSTOSOWANIE DO TELEFONÓW */
 
+/* #region loading screen */
+
+    /* Stylizacja ekranu startowego */
+    .intro {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #161616; /* Ciemne tło */
+        transition: 0.88s; /* Czas przesuwania się ekranu w górę */
+        
+        /* POPRAWKA: Ustawiamy bardzo wysoki z-index, wyższy niż menu (sidebar ma 1000) */
+        z-index: 9999; 
+    }
+
+    .logo-header {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Wyśrodkowanie */
+        color: #ffffff;
+        
+        /* POPRAWKA: Logo musi być jeszcze wyżej niż tło intro */
+        z-index: 10000; 
+    }
+
+    .logo {
+        position: relative;
+        display: inline-block;
+        bottom: -20px; 
+        opacity: 0; 
+        z-index: 10000; /* Też wysoko dla pewności */
+    }
+
+    /* Klasa dodawana, aby logo się pojawiło */
+    .logo.active {
+        bottom: 0;
+        opacity: 1;
+        transition: ease-in-out 0.5s;
+    }
+
+    /* Klasa dodawana, aby logo zniknęło i przesunęło się w górę */
+    .logo.fade {
+        bottom: 150px;
+        opacity: 0;
+        transition: ease-in-out 0.5s;
+    }
+
+/* #endregion loading screen */
