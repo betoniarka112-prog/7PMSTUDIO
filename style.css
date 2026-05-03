@@ -1,0 +1,835 @@
+
+/* #region GLOBAL */
+
+  /*.container{
+
+    border: dotted;
+    border-color: red;
+
+  }*/
+
+  *{
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+  }
+
+  /* Na wszelki wypadek to samo dla body */
+  body{
+
+    scrollbar-width: none !important;
+    -ms-overflow-style: none;
+    background-color: black;
+
+  }
+
+  body::-webkit-scrollbar{
+
+    display: none !important;
+
+  }
+
+  /* Ukrycie paska dla Chrome, Safari, Edge i Opera */
+  html::-webkit-scrollbar{
+
+    display: none !important;
+
+  }
+
+  /* Ukrycie paska dla Firefox */
+  html{
+
+    scrollbar-width: none !important;
+    -ms-overflow-style: none; /* Dla starego IE i Edge */
+    background-color: #171717;
+
+  }
+
+  .shadow_boxer{
+
+    width: 100%;
+    height: 1px; /* Musi mieć minimalną wysokość */
+    box-shadow: 0px 0px 30px 20px rgba(0, 0, 0, 0.548);
+    position: relative;
+    z-index: 5; /* Wynosi go nad tło sekcji */
+    background: black;
+    
+  }
+
+/* #endregion GLOBAL */
+
+/* #region nav_bar_sec> */
+
+  .nav_bar{
+
+    position: fixed;
+    top: 0;
+    left: 25vw;
+    font-family: "Montserrat", system-ui;
+    width: 50%;
+    z-index: 10;
+    /*border: dotted;
+    border-color: red;*/
+
+  }
+
+  .nav_bar ul{
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 2.5svh;
+    justify-content: center;
+    display: flex;
+    margin-top: 2vh;
+    user-select: none;
+
+  }
+
+  .nav_bar ul li a{
+
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    
+  }
+
+  .nav_bar ul li a:hover{
+
+    color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.06); /*skaluje bez rozpierdalania calej listy pog*/
+
+  }
+
+/* #endregion navbar> */
+
+/* #region first_on_sight_sec */
+
+  #first_on_sight_sec_id{
+
+    background-image: url('IMAGES/bg_1.png'); /* MUSI być taka sama nazwa jak pliku */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 30px 20px rgba(0, 0, 0, 0.548);
+    z-index: 10;
+
+  }
+
+  /* Reszta stylów dla logo pozostaje bez zmian */
+  .logo_text{
+
+    color: white;
+    font-size: 10svh;
+    pointer-events: none;
+    font-family: "Sekuya", system-ui;
+
+  }
+
+  .logo{
+
+    position: absolute;
+    margin-left: 6vw;
+    margin-top: 40vh;
+    pointer-events: none;
+    user-select: none;
+    
+  }
+
+/* #endregion first_on_sight_sec */
+
+/* #region services_sec */
+
+  #services_sec_id_rel{
+
+    height: 100vh;
+
+  }
+
+  .bg{
+
+    background-color: #171717;
+    width: 100%;
+    height: 100vh;
+    color: white;
+    position: relative;
+    z-index: 1;
+    box-shadow: inset 0px 40px 40px -10px rgba(0, 0, 0, 0.548);
+
+  }
+
+  .services_pulp{
+
+    display: flex;
+    /*margin-left: 30vw;*/
+    justify-content: center;
+
+  }
+
+  .service{
+
+    background-color: #1a1a1a;
+    width: 24vw;
+    height: 46vh;
+    display: block;
+    margin-top: 2vh;      /* ZMNIEJSZONO Z 36vh NA 8vh */
+    margin-left: 10px;
+    margin-right: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    transition: 0.3s;      /* Dodaj to dla płynniejszego efektu hover */
+    box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.548);
+    
+  }
+
+  .service:hover{
+
+    color: rgba(255, 255, 255, 1);
+    background-color: #171717;
+    
+  }
+
+  .serv_con_text{
+    width: 100%;
+    display: flex;                /* Ustawia elementy w linii */
+    justify-content: space-between; /* Usługi na lewo, MORE na prawo */
+    align-items: center;          /* Centruje je idealnie w pionie względem siebie */
+    padding: 0 14vw;              /* Odstęp od krawędzi ekranu (lewej i prawej) */
+    padding-top: 18vh;            /* To zastępuje margin-top, żeby nie psuło układu */
+    padding-bottom: 8vh;
+
+  }
+
+  /* 2. Napis Usługi - czyścimy stare ustawienia */
+  .services_text{
+
+    font-size: 5svh;
+    color: white;
+    font-family: "Sekuya", system-ui;
+    user-select: none;
+    
+    /* USUwamy te linie, jeśli je masz: */
+    position: static !important;  /* Resetujemy pozycjonowanie absolutne */
+    margin-top: 0 !important;     /* Resetujemy stare marginesy */
+    left: auto !important;        /* Resetujemy lewą krawędź */
+
+  }
+
+  /* 3. Napis MORE - stylizujemy go */
+  .more_link{
+
+    color: white;
+    text-decoration: none;        /* Usuwa podkreślenie */
+    font-family: "Montserrat", system-ui;
+    font-size: 2.5svh;
+    opacity: 0.7;                 /* Lekko przezroczysty, żeby był subtelny */
+    transition: 0.3s;
+
+  }
+
+  .more_link:hover{
+
+    opacity: 1;                   /* Rozjaśnia się po najechaniu */
+    transform: scale(1.1);        /* Delikatnie rośnie */
+    
+  }
+
+  .services_title{
+
+    width: 100%;
+    text-align: center;
+    font-family: "Montserrat", system-ui;
+    font-weight: 100;
+    margin-top: 4svh;
+    margin-bottom: 4svh;
+    font-size: 3svh;
+    
+
+  }
+
+  .services_symbol{
+
+    text-align: center;
+    margin-top: 6svh;
+    width: 100%;
+
+  }
+
+  .services_p{
+
+    font-family: "Montserrat", system-ui;
+    width: 80%;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+
+  }
+
+  .serv_con_text{
+
+    width: 100%;
+    
+
+  }
+
+  /*
+  #service_shadow_1{
+
+    box-shadow: rgb(139, 35, 70) 0px 0px 0px 2px inset, rgb(38, 38, 38) -20px 20px 0px -3px, rgb(120,30,60) -20px 20px, rgb(38, 38, 38) -60px 60px 0px -3px, rgb(120,30,60) -60px 60px, rgb(38, 38, 38) -80px 80px 0px -3px, rgb(50,10,30) -80px 80px;
+
+  }
+
+  #service_shadow_2{
+
+    box-shadow: rgb(139, 35, 70) 0px 0px 0px 2px inset;
+
+  }
+
+  #service_shadow_3{
+
+    box-shadow: rgb(139, 35, 70) 0px 0px 0px 2px inset, rgb(38, 38, 38) 20px 20px 0px -3px, rgb(120,30,60) 20px 20px, rgb(38, 38, 38) 60px 60px 0px -3px, rgb(120,30,60) 60px 60px, rgb(38, 38, 38) 80px 80px 0px -3px, rgb(50,10,30) 80px 80px;
+
+  }
+  */
+
+/* #endregion services_sec */
+
+/* #region valuation_sec */
+
+  #valuation_sec_id{
+
+    height: 100vh;         /* Chcemy, żeby ta sekcja zajmowała cały ekran */
+    display: flex;         /* Włączamy elastyczny układ */
+    justify-content: center; /* Centrowanie w poziomie */
+    align-items: center;     /* Centrowanie w pionie - to załatwi problem "za wysoko" */
+    box-shadow: 0px 0px 30px 20px rgba(0, 0, 0, 0.548);
+
+  }
+
+  .valuation_window{
+
+    width: 80%;
+    min-height: 60vh;
+    background-color: #1a1a1a;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(0,0,0,0.8);
+
+  }
+
+  .val_left{
+
+    width: 38%;
+    padding: 5vh 4vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #141414;
+    border-right: 1px solid #2a2a2a;
+
+  }
+
+  .val_label{
+
+    font-family: "Montserrat", system-ui;
+    font-size: 1.2svh;
+    letter-spacing: 0.3em;
+    color: #781E3C;
+    margin-bottom: 2vh;
+
+  }
+
+  .val_heading{
+
+    font-family: "Montserrat", system-ui;
+    font-size: 3.2svh;
+    color: white;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 3vh;
+
+  }
+
+  .val_desc{
+
+    font-family: "Montserrat", system-ui;
+    font-size: 1.4svh;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+    font-weight: 300;
+
+  }
+
+  .val_right{
+
+    width: 62%;
+    padding: 4vh 3vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4vh;
+    justify-content: center;
+
+  }
+
+  .val_input{
+
+    background: transparent;
+    border: 1px solid #2e2e2e;
+    border-radius: 3px;
+    padding: 1.4vh 1.4vw;
+    color: white;
+    font-family: "Montserrat", system-ui;
+    font-size: 1.5svh;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+
+  }
+
+  .val_input::placeholder{
+
+    color: rgba(255,255,255,0.3);
+
+  }
+
+  .val_input:focus{
+
+    border-color: #781E3C;
+
+  }
+
+  .val_textarea{
+
+    resize: vertical;
+    min-height: 10vh;
+
+  }
+
+  .val_select_wrapper{
+
+    position: relative;
+    width: 100%;
+
+  }
+
+  .val_select{
+
+    width: 100%;
+    background: transparent;
+    border: 1px solid #2e2e2e;
+    border-radius: 3px;
+    padding: 1.4vh 1.4vw;
+    color: rgba(255,255,255,0.3);
+    font-family: "Montserrat", system-ui;
+    font-size: 1.5svh;
+    font-weight: 300;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+
+  }
+
+  .val_select:focus{
+
+    border-color: #781E3C;
+    color: white;
+
+  }
+
+  .val_select option{
+
+    background-color: #1a1a1a;
+    color: white;
+
+  }
+
+  .val_btn{
+
+    margin-top: 0.5vh;
+    padding: 1.5vh 2vw;
+    background-color: #781E3C;
+    color: white;
+    font-family: "Montserrat", system-ui;
+    font-size: 1.5svh;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    align-self: flex-start;
+    
+  }
+
+  .val_btn:hover{
+
+    background-color: #9E2850;
+
+  }
+
+  .val_btn:active{
+
+    transform: scale(0.98);
+    
+  }
+
+/* #endregion valuation_sec */
+
+/* #region portfolio_sec */
+
+  /* 4. Miniatury wideo - dokładnie 50% szerokości (dwa obok siebie) bez przerw */
+  .video_wrapper{
+
+    position: relative;
+    width: 50%; 
+    padding-bottom: 28.125%; /* Proporcja 16:9 dla 50% szerokości */
+    height: 0;
+    overflow: hidden;
+    box-shadow: 0px 0px 30px 20px rgba(0, 0, 0, 0.548);
+
+  }
+
+  #contact_sec_id{
+
+    display: flex;          /* Włącza elastyczny układ */
+    flex-wrap: wrap;        /* Pozwala przenosić miniatury do nowej linii na telefonach */
+    justify-content: center; /* Centruje elementy w poziomie */
+    gap: 5px;              /* Tworzy równy odstęp między miniaturami */
+    width: 80%;                                                                                          /* Szerokość całego kontenera */
+    margin: 0 auto;         /* Centruje sam kontener na środku strony */
+    padding-top: 10em;
+      
+  }
+
+  .portfolio_sec{
+
+    position: relative;
+    z-index: 20;
+    background-color: #171717;
+    width: 100%;
+    min-height: unset; /* ← zamiast min-height: 100vh */
+    
+    
+  }
+
+  /* 3. Kontener na całą szerokość bez marginesów bocznych */
+  .portfolio_sec .container{
+
+    max-width: 100% !important;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    
+
+  }
+
+  /* Na urządzenia mobilne - jeden film na całą szerokość */
+  @media (max-width: 768px){
+
+    .video_wrapper{
+
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 dla 100% szerokości */
+
+    }
+
+    .portfolio_sec{
+
+      padding-top: 60px; /* Mniejszy odstęp na telefonach */
+
+    }
+
+  }
+
+  .video_wrapper iframe{
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+
+  }
+
+/* #endregion portfolio_sec */
+
+/* #region footer_sec */
+
+  #footer_sec_id{
+
+    width: 100%;
+    height: 25vh;
+    background-color:#171717;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* pushes child to bottom */
+
+  }
+
+  .footer_base{
+
+    width: 100%;
+    background-color: #030303;
+    height: 8vh;
+    position: absolute;
+    bottom: 0; /* sticks to bottom of parent */
+    box-shadow: 0px 0px 30px 20px rgba(0, 0, 0, 0.548);
+
+  }
+
+/* #endregion footer_sec */
+
+
+
+
+
+
+
+
+
+/* #region SERVICES_HTML */
+
+  #bg_services_subpage{
+
+    height: 200vh;
+
+  }
+
+  #services_sec_id{
+
+    height: 200vh;
+
+  }
+
+  #title_man{
+
+    margin: auto;
+    font-size: 4vw
+
+  }
+
+                                                                        .bg_s{
+
+                                                                          /* Wskazujemy na ten sam obrazek co na stronie głównej */
+                                                                          background-image: url('IMAGES/bg_1.png'); 
+                                                                          
+                                                                          /* Kluczowe ustawienia, żeby tło wyglądało dobrze */
+                                                                          background-size: cover;           /* Obrazek pokryje całą sekcję */
+                                                                          background-position: center;      /* Wyśrodkowanie grafiki */
+                                                                          background-repeat: no-repeat;     /* Brak powtarzania obrazka */
+                                                                          background-attachment: fixed;     /* (Opcjonalnie) Efekt paralaksy - tło stoi, treść płynie */
+
+                                                                          width: 100%;
+                                                                          min-height: 100vh;                /* Ważne: min-height zamiast height */
+                                                                          color: white;
+                                                                          display: flex;
+                                                                          flex-direction: column;
+                                                                          
+                                                                        }
+
+
+/* #endregion SERVICES_HTML */
+
+/* #region PORTFOLIO_HTML */
+
+
+
+  #port_con_text{
+
+    width: 100%;
+    display: flex;                /* Ustawia elementy w linii */
+    justify-content: space-between; /* Usługi na lewo, MORE na prawo */
+    align-items: center;          /* Centruje je idealnie w pionie względem siebie */
+    padding-bottom: 10vh;
+    padding-top: 6vh;
+
+  }
+
+  #contact_sec_por_id{
+
+      display: flex;          /* Włącza elastyczny układ */
+      flex-wrap: wrap;        /* Pozwala przenosić miniatury do nowej linii na telefonach */
+      justify-content: center; /* Centruje elementy w poziomie */
+      /*gap: 5px;*/              /* Tworzy równy odstęp między miniaturami */
+      width: 95%;             /* Szerokość całego kontenera */
+      margin: 0 auto;         /* Centruje sam kontener na środku strony */
+      column-gap: 5px;
+      row-gap: 0;
+
+  }
+
+  .nav_bar_sec_por{
+
+    background-color: #171717;
+
+  }
+
+  .nav_bar_por{
+
+    position: sticky;
+    font-family: "Montserrat", system-ui;
+    /*margin-left: 34%;*/
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin-top: 2vh;
+    background-color: #171717;
+
+
+  }
+
+  .nav_bar_por ul{
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 2.5svh;
+    justify-content: center;
+    display: flex;
+    user-select: none;
+
+  }
+
+  .nav_bar_por ul li a{
+
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+
+  }
+
+  .nav_bar_por ul li a:hover{
+
+    color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.06); /*skaluje bez rozpierdalania calej listy pog*/
+
+  }
+
+
+
+  .portfolio_text{
+
+    font-size: 5svh;
+    color: white;
+    font-family: "Sekuya", system-ui;
+    user-select: none;
+    
+    /* USUwamy te linie, jeśli je masz: */
+    position: static !important;  /* Resetujemy pozycjonowanie absolutne */
+    margin-top: 0 !important;     /* Resetujemy stare marginesy */
+    left: auto !important;        /* Resetujemy lewą krawędź */
+
+  }
+
+  .video_wrapper{
+
+    position: relative;
+    flex-basis: calc(50% - 3px);
+    min-width: unset;
+    padding-bottom: 28.125%;
+    height: 0;
+    overflow: hidden;
+
+  }
+
+  /* Styl dla obrazka pozostaje bez zmian, upewnij się tylko że ma width 100% */
+  .video_wrapper img{
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s ease;
+
+  }
+
+  .video_wrapper a{
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+
+  }
+
+  .video_overlay{
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+    width: 90%;
+
+  }
+
+  .video_wrapper:hover img{
+
+    opacity: 0.05;
+    cursor: pointer;
+
+  }
+
+  .video_wrapper:hover .video_overlay{
+
+    opacity: 1;
+
+  }
+
+  /* Na telefony - jedna miniatura pod drugą */
+  @media(max-width: 768px){
+
+    .video_wrapper{
+      width: 100%;
+    }
+
+  }
+
+  .video_title{
+
+    color: white;
+    font-family: "Montserrat", system-ui;
+    font-size: 4svh;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+
+  }
+
+
+  .video_artist{
+
+    color: rgba(255, 255, 255, 0.6);
+    font-family: "Montserrat", system-ui;
+    font-size: 2svh;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+
+  }
+
+
+/* #endregion PORTFOLIO_HTML */
