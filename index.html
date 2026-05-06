@@ -13,6 +13,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Sekuya&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
+        <script src="https://kit.fontawesome.com/a1f3b37032.js" crossorigin="anonymous"></script>
+
     </head>
 
     <body> 
@@ -33,6 +35,8 @@
                 </div>
 
         </section>
+
+        
 
         <section class = "first_on_sight_sec">
 
@@ -66,7 +70,7 @@
 
                             <div class = "service">
 
-                                <h1 class = "services_symbol">X</h1>
+                                <h1 class = "services_symbol"><i class="fa-solid fa-microphone"></i></h1>
 
                                 <h1 class = "services_title">REALIZACJA WOKALI<br>‎</h1>
 
@@ -76,7 +80,7 @@
 
                             <div class = "service">
 
-                                <h1 class = "services_symbol">X</h1>
+                                <h1 class = "services_symbol"><i class="fa-solid fa-sliders"></i></h1>
 
                                 <h1 class = "services_title">MIX MASTERING<br>‎</h1>
 
@@ -86,7 +90,7 @@
 
                             <div class = "service">
 
-                                <h1 class = "services_symbol">X</h1>
+                                <h1 class = "services_symbol"><i class="fa-solid fa-kitchen-set"></i></h1>
 
                                 <h1 class = "services_title">KOMPLETMA REALIZACJA UTWORU</h1>
 
@@ -106,37 +110,40 @@
 
         <section class = "valuation_sec">
 
-                <div class = "container"  id = "valuation_sec_id">
+            <div class = "container"  id = "valuation_sec_id">
 
-                    <div class="valuation_window">
+                <div class="valuation_window">
 
-                        <div class="val_left">
-                            <p class="val_label">SKONTAKTUJ SIĘ</p>
-                            <h2 class="val_heading">Porozmawiajmy<br>o Twoich<br>potrzebach!</h2>
-                            <p class="val_desc">Masz pomysł, pytanie lub projekt? Skontaktuj się z nami — odpowiemy najszybciej jak się da!</p>
+                    <div class="val_left">
+                        <p class="val_label">SKONTAKTUJ SIĘ</p>
+                        <h2 class="val_heading">Porozmawiajmy<br>o Twoich<br>potrzebach!</h2>
+                        <p class="val_desc">Masz pomysł, pytanie lub projekt? Skontaktuj się z nami — odpowiemy najszybciej jak się da!</p>
+                    </div>
+
+                    <div class="val_right">
+                        <input class="val_input" type="text" placeholder="Jak masz na imię..." />
+                        <input class="val_input" type="email" placeholder="Twój email..." />
+
+                        <div class="val_select_wrapper">
+                            <select class="val_select">
+                                <option value="" disabled selected>Wybierz temat...</option>
+                                <option>REALIZACJA WOKALI</option>
+                                <option>MIX MASTERING</option>
+                                <option>KOMPLETMA REALIZACJA UTWORU</option>
+                                <option>PRODUKCJA VIDEO</option>
+                                <option>MONTAŻ VIDEO</option>
+                                <option>BEATY</option>
+                                <option>INNE</option>
+                            </select>
                         </div>
 
-                        <div class="val_right">
-                            <input class="val_input" type="text" placeholder="Jak masz na imię..." />
-                            <input class="val_input" type="email" placeholder="Twój email..." />
-
-                            <div class="val_select_wrapper">
-                                <select class="val_select">
-                                    <option value="" disabled selected>Wybierz temat...</option>
-                                    <option>Realizacja Wokali</option>
-                                    <option>Mix Mastering</option>
-                                    <option>Produkcja Video</option>
-                                    <option>Inne</option>
-                                </select>
-                            </div>
-
-                            <textarea class="val_input val_textarea" placeholder="Twoja wiadomość..."></textarea>
-                            <button class="val_btn">Wyślij wiadomość</button>
-                        </div>
-
+                        <textarea class="val_input val_textarea" placeholder="Twoja wiadomość..."></textarea>
+                        <button class="val_btn">Wyślij wiadomość</button>
                     </div>
 
                 </div>
+
+            </div>
 
         </section>
 

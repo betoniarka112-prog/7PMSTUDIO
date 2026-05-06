@@ -55,4 +55,46 @@ function smoothScrollTo(target, duration, offset) {
 }
 */
 
+function sendMail() {
+    // 1. Get the data from inputs
+    const params = {
+        name: document.getElementById("from_name").value,
+        email: document.getElementById("reply_to").value,
+        subject: document.getElementById("subject").value,
+        message: document.getElementById("message").value,
+    };
 
+    // 2. Simple Validation
+    if (!params.name || !params.email || !params.message) {
+        alert("Proszę wypełnić wszystkie pola!");
+        return;
+    }
+
+    const btn = document.getElementById("submit_btn");
+    btn.innerText = "Wysyłanie...";
+    btn.style.opacity = "0.7";
+
+    // 3. Service ID, Template ID, and Public Key from your EmailJS account
+    const serviceID = "YOUR_SERVICE_ID"; 
+    const templateID = "YOUR_TEMPLATE_ID";
+
+    emailjs.send(serviceID, templateID, params)
+        .then(res => {
+            // Clear inputs
+            document.getElementById("from_name").value = "";
+            document.getElementById("reply_to").value = "";
+            document.getElementById("subject").selectedIndex = 0;
+            document.getElementById("message").value = "";
+            
+            console.log(res);
+            alert("Wiadomość została wysłana pomyślnie!");
+            btn.innerText = "Wyślij wiadomość";
+            btn.style.opacity = "1";
+        })
+        .catch(err => {
+            console.log(err);
+            alert("Wystąpił błąd podczas wysyłania. Spróbuj ponownie.");
+            btn.innerText = "Wyślij wiadomość";
+            btn.style.opacity = "1";
+        });
+}

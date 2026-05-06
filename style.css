@@ -258,6 +258,7 @@
     text-align: center;
     margin-top: 6svh;
     width: 100%;
+    font-size: 3.5vw;
 
   }
 
@@ -606,13 +607,13 @@
 
   #bg_services_subpage{
 
-    height: 200vh;
+    height: 155vh;
 
   }
 
   #services_sec_id{
 
-    height: 200vh;
+    height: 155vh;
 
   }
 
