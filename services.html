@@ -137,25 +137,43 @@
                     </div>
 
                     <div class="val_right">
-                        <input class="val_input" type="text" placeholder="Jak masz na imię..." />
-                        <input class="val_input" type="email" placeholder="Twój email..." />
+
+                        <input id="from_name" class="val_input" type="text" placeholder="Jak masz na imię..." required />
+                        <input id="reply_to" class="val_input" type="email" placeholder="Twój email..." required />
 
                         <div class="val_select_wrapper">
-                            <select class="val_select">
+
+                            <select id="subject" class="val_select">
+
                                 <option value="" disabled selected>Wybierz temat...</option>
-                                <option>REALIZACJA WOKALI</option>
-                                <option>MIX MASTERING</option>
-                                <option>KOMPLETMA REALIZACJA UTWORU</option>
-                                <option>PRODUKCJA VIDEO</option>
-                                <option>MONTAŻ VIDEO</option>
-                                <option>BEATY</option>
-                                <option>INNE</option>
+                                <option value="REALIZACJA WOKALI">REALIZACJA WOKALI</option>
+                                <option value="MIX MASTERING">MIX MASTERING</option>
+                                <option value="KOMPLETMA REALIZACJA UTWORU">KOMPLETMA REALIZACJA UTWORU</option>
+                                <option value="PRODUKCJA VIDEO">PRODUKCJA VIDEO</option>
+                                <option value="MONTAŻ VIDEO">MONTAŻ VIDEO</option>
+                                <option value="BEATY">BEATY</option>
+                                <option value="INNE">INNE</option>
+
                             </select>
+
                         </div>
 
-                        <textarea class="val_input val_textarea" placeholder="Twoja wiadomość..."></textarea>
-                        <button class="val_btn">Wyślij wiadomość</button>
+                        <textarea id="message" class="val_input val_textarea" placeholder="Twoja wiadomość..." required></textarea>
+                        <button id="submit_btn" class="val_btn" onclick="sendMail()">Wyślij wiadomość</button>
+
                     </div>
+
+                    <!-- Include EmailJS SDK before your script.js -->
+                    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+                    <script type="text/javascript">
+
+                        (function(){
+
+                            emailjs.init("UG_X2M_sHODcn5R8e"); // You get this from EmailJS Dashboard
+
+                        })();
+                        
+                    </script>
 
                 </div>
 

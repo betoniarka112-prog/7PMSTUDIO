@@ -75,8 +75,8 @@ function sendMail() {
     btn.style.opacity = "0.7";
 
     // 3. Service ID, Template ID, and Public Key from your EmailJS account
-    const serviceID = "YOUR_SERVICE_ID"; 
-    const templateID = "YOUR_TEMPLATE_ID";
+    const serviceID = "service_3ppaqoh"; 
+    const templateID = "template_uocsgzp";
 
     emailjs.send(serviceID, templateID, params)
         .then(res => {

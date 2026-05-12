@@ -88,13 +88,46 @@
 
   }
 
+  /* Styl podstawowy linku */
   .nav_bar ul li a{
 
     display: block;
     color: white;
     padding: 14px 16px;
     text-decoration: none;
-    
+    position: relative; /* Ważne: pozwala pozycjonować kreskę względem linku */
+    transition: color 0.3s ease;
+
+  }
+
+  /* Tworzymy "niewidzialną" kreskę pod tekstem */
+  .nav_bar ul li a::after{
+
+    content: '';
+    position: absolute;
+    width: 0;                /* Startujemy od zera */
+    height: 2px;             /* Grubość kreski */
+    bottom: 5px;             /* Odległość od tekstu */
+    left: 50%;               /* Zaczynamy od środka... */
+    /*background-color: #781E3C; /* Twój bordowy kolor z sekcji wyceny */
+    background-color: #ffffff;
+    transition: all 0.3s ease; /* Płynna animacja */
+    transform: translateX(-50%); /* ...żeby rozwijała się równomiernie na boki */
+
+  }
+
+  /* Efekt po najechaniu (Hover) */
+  .nav_bar ul li a:hover{
+
+    color: rgba(255, 255, 255, 0.8);
+    /* transform: scale(1.06); <- opcjonalnie: usuń to, jeśli chcesz tylko podkreślenie jak na wzorze */
+
+  }
+
+  .nav_bar ul li a:hover::after{
+
+    width: 70%;             /* Kreska rozwija się do 70% szerokości linku */
+
   }
 
   .nav_bar ul li a:hover{
@@ -258,7 +291,7 @@
     text-align: center;
     margin-top: 6svh;
     width: 100%;
-    font-size: 3.5vw;
+    font-size: 2.8vw;
 
   }
 
@@ -323,7 +356,9 @@
     flex-direction: row;
     border-radius: 4px;
     overflow: hidden;
-    box-shadow: 0 0 60px rgba(0,0,0,0.8);
+    box-shadow: 
+    0 0 60px rgba(0,0,0,0.8),             /* Twój stary cień zewnętrzny */
+    inset 0px 0px 20px 5px rgba(0,0,0,0.5); /* NOWY: cień wewnętrzny */
 
   }
 
@@ -336,13 +371,14 @@
     justify-content: center;
     background-color: #141414;
     border-right: 1px solid #2a2a2a;
+    box-shadow: inset 15px 0px 30px -10px rgba(0, 0, 0, 0.5);
 
   }
 
   .val_label{
 
     font-family: "Montserrat", system-ui;
-    font-size: 1.2svh;
+    font-size: 2.8svh;
     letter-spacing: 0.3em;
     color: #781E3C;
     margin-bottom: 2vh;
@@ -363,11 +399,11 @@
   .val_desc{
 
     font-family: "Montserrat", system-ui;
-    font-size: 1.4svh;
+    font-size: 1.8svh;
     color: rgba(255,255,255,0.45);
-    line-height: 1.7;
+    line-height: 1.5;
     font-weight: 300;
-
+  
   }
 
   .val_right{
@@ -394,6 +430,7 @@
     outline: none;
     transition: border-color 0.2s;
     width: 100%;
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.3);             /*cien na inputach*/
 
   }
 
@@ -413,6 +450,7 @@
 
     resize: vertical;
     min-height: 10vh;
+    max-height: 42vh;
 
   }
 
@@ -648,32 +686,6 @@
 
 /* #region PORTFOLIO_HTML */
 
-
-
-  #port_con_text{
-
-    width: 100%;
-    display: flex;                /* Ustawia elementy w linii */
-    justify-content: space-between; /* Usługi na lewo, MORE na prawo */
-    align-items: center;          /* Centruje je idealnie w pionie względem siebie */
-    padding-bottom: 10vh;
-    padding-top: 6vh;
-
-  }
-
-  #contact_sec_por_id{
-
-      display: flex;          /* Włącza elastyczny układ */
-      flex-wrap: wrap;        /* Pozwala przenosić miniatury do nowej linii na telefonach */
-      justify-content: center; /* Centruje elementy w poziomie */
-      /*gap: 5px;*/              /* Tworzy równy odstęp między miniaturami */
-      width: 95%;             /* Szerokość całego kontenera */
-      margin: 0 auto;         /* Centruje sam kontener na środku strony */
-      column-gap: 5px;
-      row-gap: 0;
-
-  }
-
   .nav_bar_sec_por{
 
     background-color: #171717;
@@ -713,6 +725,7 @@
     padding: 14px 16px;
     text-decoration: none;
 
+    
   }
 
   .nav_bar_por ul li a:hover{
@@ -722,7 +735,39 @@
 
   }
 
+  
 
+
+
+
+
+
+
+
+
+  #port_con_text{
+
+    width: 100%;
+    display: flex;                /* Ustawia elementy w linii */
+    justify-content: space-between; /* Usługi na lewo, MORE na prawo */
+    align-items: center;          /* Centruje je idealnie w pionie względem siebie */
+    padding-bottom: 10vh;
+    padding-top: 6vh;
+
+  }
+
+  #contact_sec_por_id{
+
+      display: flex;          /* Włącza elastyczny układ */
+      flex-wrap: wrap;        /* Pozwala przenosić miniatury do nowej linii na telefonach */
+      justify-content: center; /* Centruje elementy w poziomie */
+      /*gap: 5px;*/              /* Tworzy równy odstęp między miniaturami */
+      width: 95%;             /* Szerokość całego kontenera */
+      margin: 0 auto;         /* Centruje sam kontener na środku strony */
+      column-gap: 5px;
+      row-gap: 0;
+
+  }
 
   .portfolio_text{
 
